@@ -1,0 +1,34 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_DeleteStudent`(IN `id` INT(50))
+BEGIN
+	DELETE FROM students WHERE students.id=id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GetAllStudent`()
+BEGIN
+	SELECT * FROM students;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GetStudentById`(IN `id` INT(50))
+BEGIN
+	SELECT * FROM students WHERE students.id=id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertStudent`(IN `name` VARCHAR(50), IN `enrollment` VARCHAR(50), IN `password` VARCHAR(20), IN `branch` VARCHAR(20), IN `sem` INT(10))
+BEGIN
+	INSERT INTO students (id, name, enrollment, password, branch, sem) VALUES (NULL, name, enrollment, password, branch, sem);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpdateStudent`(IN `name` VARCHAR(50), IN `enrollment` VARCHAR(50), IN `branch` VARCHAR(20), IN `sem` INT(20), IN `id` INT(50))
+BEGIN
+	UPDATE students SET students.name=name,students.enrollment=enrollment,students.branch=branch,students.sem=sem WHERE students.id=id;
+END$$
+DELIMITER ;
